@@ -74,6 +74,7 @@ var Aqueous = React.createClass({
         <View style={rowStyles.inner}>
           <View style={rowStyles.header}>
             <Image source={{uri: "http://i.imgur.com/hSyZ07o.jpg"}} style={rowStyles.headerImage}>
+              <View style={rowStyles.headerSpacer} />
               <Text style={rowStyles.headerText}>{performedAtText}</Text>
             </Image>
           </View>
@@ -263,12 +264,12 @@ var Aqueous = React.createClass({
 
 var rowStyles = {
   outer: {
-    height: 150,
+    height: 175,
   },
 
   inner: {
     flexDirection: 'column',
-    height: 150,
+    height: 175,
   },
 
   header: {
@@ -277,14 +278,22 @@ var rowStyles = {
   },
 
   headerImage: {
-    height: 113, // whyyyy
+    flex: 1
+  },
+
+  headerSpacer: {
+    flex: 1
   },
 
   headerText: {
     fontSize: 13,
+    paddingLeft: 10,
+    paddingBottom: 5,
     color: 'white',
-    paddingTop: 90,
-    paddingLeft: 10
+    shadowColor: '#000',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
   },
 
   footer: {
