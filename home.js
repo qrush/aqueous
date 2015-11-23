@@ -60,13 +60,16 @@ var Aqueous = React.createClass({
    */
   _renderRowView(rowData) {
     return (
-      <TouchableHighlight 
-        style={customStyles.row} 
-        underlayColor='#c8c7cc'
-        onPress={() => this._onPress(rowData)}
-      >  
-        <Text>{rowData}</Text>
-      </TouchableHighlight>
+      <View style={rowStyles.outer}>
+        <View style={{backgroundColor: 'blue', flex: 0.5}} />
+        <TouchableHighlight
+          style={rowStyles.text}
+          underlayColor='#c8c7cc'
+          onPress={() => this._onPress(rowData)}
+        >
+          <Text>{rowData}</Text>
+        </TouchableHighlight>
+      </View>
     );
   },
 
@@ -218,12 +221,12 @@ var Aqueous = React.createClass({
         <View style={screenStyles.navBar} />
         <GiftedListView
           rowView={this._renderRowView}
-          
+
           onFetch={this._onFetch}
           initialListSize={12} // the maximum number of rows displayable without scrolling (height of the listview / height of row)
 
           firstLoader={true} // display a loader for the first fetching
-      
+
           pagination={true} // enable infinite scrolling using touch to load more
           paginationFetchigView={this._renderPaginationFetchigView}
           paginationAllLoadedView={this._renderPaginationAllLoadedView}
@@ -235,11 +238,11 @@ var Aqueous = React.createClass({
           refreshableFetchingView={this._renderRefreshableFetchingView}
           refreshableWillRefreshView={this._renderRefreshableWillRefreshView}
           refreshableWaitingView={this._renderRefreshableWaitingView}
-          
+
           emptyView={this._renderEmptyView}
-          
+
           renderSeparator={this._renderSeparatorView}
-          
+
           withSections={true} // enable sections
           sectionHeaderView={this._renderSectionHeaderView}
         />
@@ -248,6 +251,16 @@ var Aqueous = React.createClass({
   }
 });
 
+var rowStyles = {
+  outer: {
+    flexDirection: 'column',
+    height: 150,
+  },
+
+  text: {
+    padding: 10,
+  }
+}
 
 var customStyles = {
   separator: {
@@ -278,10 +291,6 @@ var customStyles = {
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 15,
-  },
-  row: {
-    padding: 10,
-    height: 44,
   },
   header: {
     backgroundColor: '#EEE',
