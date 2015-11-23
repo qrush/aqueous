@@ -290,10 +290,6 @@ var rowStyles = {
     paddingLeft: 10,
     paddingBottom: 5,
     color: 'white',
-    shadowColor: '#000',
-    shadowOffset: { width: 3, height: 3 },
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
   },
 
   footer: {
