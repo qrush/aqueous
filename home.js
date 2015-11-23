@@ -22,21 +22,30 @@ var Aqueous = React.createClass({
    * @param {object} options Inform if first load
    */
   _onFetch(page = 1, callback, options) {
-    setTimeout(() => {
-      var header = 'Header '+page;
-      var rows = {};
-      rows[header] = ['row '+((page - 1) * 3 + 1), 'row '+((page - 1) * 3 + 2), 'row '+((page - 1) * 3 + 3)];
-      if (page === 5) {
-        callback(rows, {
-          allLoaded: true, // the end of the list is reached
-        });        
-      } else {
-        callback(rows);
-      }
-    }, 1000); // simulating network fetching
+    var sections = {};
+
+    fetch('http://aqueousband.com/tour.json')
+      .then((response) => response.json())
+      .then((responseJSON) => {
+        var rows = []
+
+        for(let show of responseJSON) {
+          var performedAt = new Date(show.performed_at).toLocaleDateString()
+
+          rows.push(performedAt + " @ " + show.venue.name + " in " + show.venue.location)
+        }
+
+        sections["Upcoming shows"] = rows
+        callback(sections, {
+          allLoaded: true
+        });
+      })
+    .catch((error) => {
+      console.warn(error);
+    });
   },
-  
-  
+
+
   /**
    * When a row is touched
    * @param {object} rowData Row data
