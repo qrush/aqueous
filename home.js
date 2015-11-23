@@ -6,7 +6,8 @@ var {
   Text,
   View,
   TouchableHighlight,
-  Platform
+  Platform,
+  Image
 } = React;
 
 var GiftedListView = require('react-native-gifted-listview');
@@ -32,7 +33,7 @@ var Aqueous = React.createClass({
         for(let show of responseJSON) {
           var performedAt = new Date(show.performed_at).toLocaleDateString()
 
-          rows.push(performedAt + " @ " + show.venue.name + " in " + show.venue.location)
+          rows.push(show.venue.name + " in " + show.venue.location)
         }
 
         sections["Upcoming shows"] = rows
@@ -60,16 +61,18 @@ var Aqueous = React.createClass({
    */
   _renderRowView(rowData) {
     return (
-      <View style={rowStyles.outer}>
-        <View style={{backgroundColor: 'blue', flex: 0.5}} />
-        <TouchableHighlight
-          style={rowStyles.text}
-          underlayColor='#c8c7cc'
-          onPress={() => this._onPress(rowData)}
-        >
-          <Text>{rowData}</Text>
-        </TouchableHighlight>
-      </View>
+      <TouchableHighlight
+        style={rowStyles.outer}
+        underlayColor='#c8c7cc'
+        onPress={() => this._onPress(rowData)}
+      >
+        <View style={rowStyles.inner}>
+          <View style={rowStyles.header}>
+            <Image source={{uri: "http://i.imgur.com/hSyZ07o.jpg"}} style={rowStyles.headerImage} />
+          </View>
+          <Text style={rowStyles.footer}>{rowData}</Text>
+        </View>
+      </TouchableHighlight>
     );
   },
 
@@ -253,11 +256,24 @@ var Aqueous = React.createClass({
 
 var rowStyles = {
   outer: {
+    height: 150,
+  },
+
+  inner: {
     flexDirection: 'column',
     height: 150,
   },
 
-  text: {
+  header: {
+    //backgroundColor: 'blue',
+    flex: 0.5,
+  },
+
+  headerImage: {
+    height: 113, // whyyyy
+  },
+
+  footer: {
     padding: 10,
   }
 }
