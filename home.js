@@ -31,12 +31,13 @@ var Aqueous = React.createClass({
         var rows = []
 
         for(let show of responseJSON) {
-          var performedAt = new Date(show.performed_at).toLocaleDateString()
 
-          rows.push(show.venue.name + " in " + show.venue.location)
+          //var performedAt = new Date(show.performed_at).toLocaleDateString()
+
+          //rows.push(show.venue.name + " in " + show.venue.location)
         }
 
-        sections["Upcoming shows"] = rows
+        sections["Upcoming shows"] = responseJSON
         callback(sections, {
           allLoaded: true
         });
@@ -49,28 +50,34 @@ var Aqueous = React.createClass({
 
   /**
    * When a row is touched
-   * @param {object} rowData Row data
+   * @param {object} show Show data
    */
-  _onPress(rowData) {
-    console.log(rowData+' pressed');
+  _onPress(show) {
+    console.log('pressed');
+    console.log(show)
   },
   
   /**
    * Render a row
-   * @param {object} rowData Row data
+   * @param {object} show Show data
    */
-  _renderRowView(rowData) {
+  _renderRowView(show) {
+    var performedAtText = new Date(show.performed_at).toLocaleDateString()
+    var venueText = show.venue.name + " in " + show.venue.location;
+
     return (
       <TouchableHighlight
         style={rowStyles.outer}
-        underlayColor='#c8c7cc'
-        onPress={() => this._onPress(rowData)}
+        underlayColor='#c8c7cc33'
+        onPress={() => this._onPress(show)}
       >
         <View style={rowStyles.inner}>
           <View style={rowStyles.header}>
-            <Image source={{uri: "http://i.imgur.com/hSyZ07o.jpg"}} style={rowStyles.headerImage} />
+            <Image source={{uri: "http://i.imgur.com/hSyZ07o.jpg"}} style={rowStyles.headerImage}>
+              <Text style={rowStyles.headerText}>{performedAtText}</Text>
+            </Image>
           </View>
-          <Text style={rowStyles.footer}>{rowData}</Text>
+          <Text style={rowStyles.footer}>{venueText}</Text>
         </View>
       </TouchableHighlight>
     );
@@ -271,6 +278,13 @@ var rowStyles = {
 
   headerImage: {
     height: 113, // whyyyy
+  },
+
+  headerText: {
+    fontSize: 13,
+    color: 'white',
+    paddingTop: 90,
+    paddingLeft: 10
   },
 
   footer: {
