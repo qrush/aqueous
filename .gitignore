@@ -1,0 +1,16 @@
+.DS_Store
+npm-debug.log
+node_modules/
+
+# Xcode
+.DS_Store
+*/build/*
+*.pbxuser
+xcuserdata
+DerivedData
+*.xcarchive
+*.ipa
+
+# Android Studio
+.gradle
+local.properties
