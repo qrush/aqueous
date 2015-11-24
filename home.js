@@ -35,15 +35,6 @@ var Aqueous = React.createClass({
     fetch('http://aqueousband.com/tour.json')
       .then((response) => response.json())
       .then((responseJSON) => {
-        var rows = []
-
-        for(let show of responseJSON) {
-
-          //var performedAt = new Date(show.performed_at).toLocaleDateString()
-
-          //rows.push(show.venue.name + " in " + show.venue.location)
-        }
-
         sections["Upcoming shows"] = responseJSON
         callback(sections, {
           allLoaded: true
@@ -215,7 +206,7 @@ var Aqueous = React.createClass({
         <Text style={customStyles.defaultViewTitle}>
           Sorry, there is no content to display
         </Text>
-        
+
         <TouchableHighlight 
           underlayColor='#c8c7cc'
           onPress={refreshCallback}
@@ -227,7 +218,7 @@ var Aqueous = React.createClass({
       </View>
     );
   },
-  
+
   /**
    * Render a separator between rows
    */
@@ -236,7 +227,7 @@ var Aqueous = React.createClass({
       <View style={customStyles.separator} />
     );
   },
-  
+ 
   render() {
     return (
       <View style={screenStyles.container}>
@@ -298,13 +289,14 @@ var rowStyles = {
 
   headerText: {
     fontSize: 13,
-    paddingLeft: 10,
-    paddingBottom: 5,
+    marginLeft: 10,
+    marginBottom: 5,
     color: 'white',
   },
 
   footer: {
-    padding: 10,
+    fontSize: 15,
+    margin: 10,
   }
 }
 
