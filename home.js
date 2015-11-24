@@ -10,8 +10,6 @@ var {
   Image
 } = React;
 
-var {Platform} = React;
-
 if (Platform.OS === 'ios')
   var Utils = require('./utils.ios.js')
 else
