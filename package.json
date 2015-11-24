@@ -9,6 +9,7 @@
     "react-native": "^0.14.2",
     "react-native-gifted-listview": "*",
     "react-native-gifted-spinner": "^0.0.3",
-    "react-native-safari-view": "^0.1.4"
+    "react-native-safari-view": "^0.1.4",
+    "react-native-webintent": "^1.0.3"
   }
 }
