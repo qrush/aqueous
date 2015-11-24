@@ -10,6 +10,13 @@ var {
   Image
 } = React;
 
+var {Platform} = React;
+
+if (Platform.OS === 'ios')
+  var Utils = require('./utils.ios.js')
+else
+  var Utils = require('./utils.android.js')
+
 var GiftedListView = require('react-native-gifted-listview');
 var GiftedSpinner = require('react-native-gifted-spinner');
 
@@ -53,8 +60,7 @@ var Aqueous = React.createClass({
    * @param {object} show Show data
    */
   _onPress(show) {
-    console.log('pressed');
-    console.log(show)
+    Utils.openURL(show.event_url)
   },
   
   /**
