@@ -5,9 +5,14 @@ var {
   LinkingIOS
 } = React;
 
+var SafariView = require('react-native-safari-view');
+
 var Utils = {
   openURL: function(url) {
-    LinkingIOS.openURL(url);
+    console.log("Opening " + url);
+    SafariView.show({
+      url: url
+    });
   }
 };
 

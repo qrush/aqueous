@@ -60,7 +60,8 @@ var Aqueous = React.createClass({
    * @param {object} show Show data
    */
   _onPress(show) {
-    Utils.openURL(show.event_url)
+    var url = show.event_url !== "" ? show.event_url : show.venue.info_url;
+    Utils.openURL(url)
   },
   
   /**
