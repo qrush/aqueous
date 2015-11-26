@@ -229,7 +229,11 @@ var Aqueous = React.createClass({
   render() {
     return (
       <View style={screenStyles.container}>
-        <View style={screenStyles.navBar} />
+        <View style={screenStyles.statusBar}></View>
+        <View style={screenStyles.navBar}>
+          <Image source={require("./resources/biglogo_white.png")} style={screenStyles.navLogo} resizeMode="contain" />
+        </View>
+
         <GiftedListView
           rowView={this._renderRowView}
 
@@ -339,10 +343,19 @@ var screenStyles = {
     flex: 1,
     backgroundColor: '#FFF',
   },
-  navBar: {
-    height: 64,
-    backgroundColor: '#CCC'
+  statusBar: {
+    backgroundColor: '#3B8E94',
+    height: 20,
   },
+  navBar: {
+    height: 44,
+    backgroundColor: '#3B8E94',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  navLogo: {
+    height: 30
+  }
 };
 
 module.exports = Aqueous;
