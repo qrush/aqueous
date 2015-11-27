@@ -38,23 +38,27 @@ var NavigationBarRouteMapper = {
         onPress={() => navigator.pop()}
         style={styles.navBarLeftButton}>
         <Text style={[styles.navBarText, styles.navBarButtonText]}>
-          {previousRoute.title}
+          Back
         </Text>
       </TouchableOpacity>
     );
   },
 
   RightButton: function(route, navigator, index, navState) {
-    return (
-      <TouchableOpacity
-        underlayColor="#FBBC35"
-        onPress={() => navigator.push(newRandomRoute())}
-        style={styles.navBarRightButton}>
-        <Text style={[styles.navBarText, styles.navBarButtonText]}>
-          ⚙
-        </Text>
-      </TouchableOpacity>
-    );
+    if (route.title == "Home") {
+      return (
+        <TouchableOpacity
+          underlayColor="#FBBC35"
+          onPress={() => navigator.push({title: "Settings"})}
+          style={styles.navBarRightButton}>
+          <Text style={[styles.navBarText, styles.navBarButtonText]}>
+            ⚙
+          </Text>
+        </TouchableOpacity>
+      );
+    } else {
+      return null;
+    }
   },
 
   Title: function(route, navigator, index, navState) {
@@ -81,6 +85,23 @@ var Router = {
         <HomeScreen />
       );
     } else {
+      return (
+        <ScrollView style={styles.scene}>
+          <Text style={styles.messageText}>{route.content}</Text>
+          <NavButton
+            onPress={() => {
+              console.log("WTF");
+            }}
+            text="First button"
+          />
+          <NavButton
+            onPress={() => {
+              console.log("LOL");
+            }}
+            text="Second button"
+          />
+        </ScrollView>
+      );
     }
   },
 };
