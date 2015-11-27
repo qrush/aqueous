@@ -72,6 +72,19 @@ var NavigationBarRouteMapper = {
   },
 };
 
+var HomeScreen = require('./home_screen.js');
+
+var Router = {
+  RenderScene: function(route, navigator) {
+    if(route.title == "Home") {
+      return (
+        <HomeScreen />
+      );
+    } else {
+    }
+  },
+};
+
 var Aqueous = React.createClass({
   render: function() {
     return (
@@ -79,17 +92,7 @@ var Aqueous = React.createClass({
         configureScene={(route) => Navigator.SceneConfigs.FloatFromBottom}
         style={styles.appContainer}
         initialRoute={{title: "Home"}}
-        renderScene={(route, navigator) => (
-          <ScrollView style={styles.scene}>
-            <Text style={styles.messageText}>{route.content}</Text>
-            <NavButton
-              onPress={() => {
-                console.log("LOL")
-              }}
-              text="ROFL!"
-            />
-          </ScrollView>
-        )}
+        renderScene={Router.RenderScene}
         navigationBar={
           <Navigator.NavigationBar
             routeMapper={NavigationBarRouteMapper}
@@ -100,7 +103,6 @@ var Aqueous = React.createClass({
     );
   },
 });
-
 
 var styles = StyleSheet.create({
   messageText: {

@@ -18,8 +18,7 @@ else
 var GiftedListView = require('react-native-gifted-listview');
 var GiftedSpinner = require('react-native-gifted-spinner');
 
-var Aqueous = React.createClass({
-
+var HomeScreen = React.createClass({
   /**
    * Will be called when refreshing
    * Should be replaced by your own logic
@@ -229,11 +228,6 @@ var Aqueous = React.createClass({
   render() {
     return (
       <View style={screenStyles.container}>
-        <View style={screenStyles.statusBar}></View>
-        <View style={screenStyles.navBar}>
-          <Image source={require("./resources/biglogo_white.png")} style={screenStyles.navLogo} resizeMode="contain" />
-        </View>
-
         <GiftedListView
           rowView={this._renderRowView}
 
@@ -341,21 +335,9 @@ var customStyles = {
 var screenStyles = {
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: '#ffffff',
+    paddingTop: 64,
   },
-  statusBar: {
-    backgroundColor: '#3B8E94',
-    height: 20,
-  },
-  navBar: {
-    height: 44,
-    backgroundColor: '#3B8E94',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  navLogo: {
-    height: 30
-  }
 };
 
-module.exports = Aqueous;
+module.exports = HomeScreen;
