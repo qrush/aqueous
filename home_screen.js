@@ -336,7 +336,7 @@ var screenStyles = {
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    paddingTop: 64,
+    marginTop: 64,
   },
 };
 
