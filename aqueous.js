@@ -52,7 +52,7 @@ var NavigationBarRouteMapper = {
           onPress={() => navigator.push({title: "Settings"})}
           style={styles.navBarRightButton}>
           <Text style={[styles.navBarText, styles.navBarButtonText]}>
-            ⚙
+            Settings
           </Text>
         </TouchableOpacity>
       );
@@ -64,7 +64,7 @@ var NavigationBarRouteMapper = {
   Title: function(route, navigator, index, navState) {
     if (route.title == "Home") {
       return (
-        <Image source={require("./resources/biglogo_white.png")} style={styles.navLogo} resizeMode="contain" />
+        <Image source={require("./resources/biglogo_white.png")} style={styles.navLogo} resizeMode='contain' />
       );
     } else {
       return (
@@ -165,8 +165,9 @@ var styles = StyleSheet.create({
     color: "#fff",
   },
   navLogo: {
+    width: 177,
+    height: 35,
     marginTop: 5,
-    height: 30
   },
   scene: {
     flex: 1,
