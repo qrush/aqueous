@@ -18,6 +18,8 @@ else
 var GiftedListView = require('react-native-gifted-listview');
 var GiftedSpinner = require('react-native-gifted-spinner');
 
+let Months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 var HomeScreen = React.createClass({
   /**
    * Will be called when refreshing
@@ -61,7 +63,10 @@ var HomeScreen = React.createClass({
    * @param {object} show Show data
    */
   _renderRowView(show) {
-    var performedAtText = new Date(show.performed_at).toLocaleDateString()
+    var performedAt = new Date(show.performed_at)
+    1
+    var month = Months[performedAt.getMonth()];
+    var day = performedAt.getDate();
     var venueText = show.venue.name + " in " + show.venue.location;
 
     return (
@@ -74,7 +79,8 @@ var HomeScreen = React.createClass({
           <View style={rowStyles.header}>
             <Image source={{uri: "http://i.imgur.com/hSyZ07o.jpg"}} style={rowStyles.headerImage}>
               <View style={rowStyles.headerSpacer} />
-              <Text style={rowStyles.headerText}>{performedAtText}</Text>
+              <Text style={rowStyles.headerDayText}>{day}</Text>
+              <Text style={rowStyles.headerMonthText}>{month}</Text>
             </Image>
           </View>
           <Text style={rowStyles.footer}>{venueText}</Text>
@@ -283,10 +289,22 @@ var rowStyles = {
     flex: 1
   },
 
-  headerText: {
-    fontSize: 13,
-    marginLeft: 10,
-    marginBottom: 5,
+  headerDayText: {
+    width: 50,
+    textAlign: 'center',
+    fontSize: 26,
+    marginLeft: 5,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+
+  headerMonthText: {
+    width: 50,
+    textAlign: 'center',
+    fontSize: 18,
+    marginLeft: 5,
+    marginBottom: 10,
+    fontWeight: 'bold',
     color: 'white',
   },
 
