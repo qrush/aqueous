@@ -52,7 +52,7 @@ var NavigationBarRouteMapper = {
           onPress={() => navigator.push({title: "Settings"})}
           style={styles.navBarRightButton}>
           <Text style={[styles.navBarText, styles.navBarButtonText]}>
-            Settings
+            ⚙
           </Text>
         </TouchableOpacity>
       );
