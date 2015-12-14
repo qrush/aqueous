@@ -77,12 +77,13 @@ var HomeScreen = React.createClass({
       >
         <View style={rowStyles.inner}>
           <View style={rowStyles.header}>
-            <View style={rowStyles.date}>
+            <Image source={{uri: show.venue.map_left_url}} style={rowStyles.headerImage} resizeMode="stretch">
               <View style={rowStyles.dateSpacer} />
               <Text style={rowStyles.dateDayText}>{day}</Text>
               <Text style={rowStyles.dateMonthText}>{month}</Text>
-            </View>
-            <Image source={{uri: show.venue.map_url}} style={rowStyles.headerImage} resizeMode="cover" />
+            </Image>
+            <Image source={{uri: show.venue.map_center_url}} style={rowStyles.headerImage} resizeMode="stretch"/>
+            <Image source={{uri: show.venue.map_right_url}} style={rowStyles.headerImage} resizeMode="stretch"/>
           </View>
           <Text style={rowStyles.footer}>{venueText}</Text>
         </View>
@@ -278,7 +279,6 @@ var rowStyles = {
   },
 
   header: {
-    backgroundColor: 'black',
     flexDirection: 'row',
     flex: 1,
   },
@@ -296,20 +296,26 @@ var rowStyles = {
   },
 
   dateDayText: {
+    width: 50,
     textAlign: 'center',
     fontSize: 26,
-    marginLeft: 3,
+    marginLeft: 10,
     fontWeight: 'bold',
-    color: 'white',
+    color: 'black',
+    backgroundColor: '#ffffff',
+    opacity: 0.7
   },
 
   dateMonthText: {
+    width: 50,
     textAlign: 'center',
     fontSize: 18,
-    marginLeft: 3,
+    marginLeft: 10,
     marginBottom: 10,
     fontWeight: 'bold',
-    color: 'white',
+    color: 'black',
+    backgroundColor: '#ffffff',
+    opacity: 0.7
   },
 
   footer: {
