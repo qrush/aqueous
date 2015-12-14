@@ -77,11 +77,12 @@ var HomeScreen = React.createClass({
       >
         <View style={rowStyles.inner}>
           <View style={rowStyles.header}>
-            <Image source={{uri: "http://i.imgur.com/hSyZ07o.jpg"}} style={rowStyles.headerImage}>
-              <View style={rowStyles.headerSpacer} />
-              <Text style={rowStyles.headerDayText}>{day}</Text>
-              <Text style={rowStyles.headerMonthText}>{month}</Text>
-            </Image>
+            <View style={rowStyles.date}>
+              <View style={rowStyles.dateSpacer} />
+              <Text style={rowStyles.dateDayText}>{day}</Text>
+              <Text style={rowStyles.dateMonthText}>{month}</Text>
+            </View>
+            <Image source={{uri: show.venue.map_url}} style={rowStyles.headerImage} resizeMode="cover" />
           </View>
           <Text style={rowStyles.footer}>{venueText}</Text>
         </View>
@@ -277,20 +278,24 @@ var rowStyles = {
   },
 
   header: {
-    //backgroundColor: 'blue',
-    flex: 0.5,
+    backgroundColor: 'black',
+    flexDirection: 'row',
+    flex: 1,
   },
 
   headerImage: {
     flex: 1
   },
 
-  headerSpacer: {
+  date: {
+    flex: 0.20,
+  },
+
+  dateSpacer: {
     flex: 1
   },
 
-  headerDayText: {
-    width: 50,
+  dateDayText: {
     textAlign: 'center',
     fontSize: 26,
     marginLeft: 3,
@@ -298,8 +303,7 @@ var rowStyles = {
     color: 'white',
   },
 
-  headerMonthText: {
-    width: 50,
+  dateMonthText: {
     textAlign: 'center',
     fontSize: 18,
     marginLeft: 3,
