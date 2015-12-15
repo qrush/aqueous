@@ -51,9 +51,7 @@ var NavigationBarRouteMapper = {
           underlayColor="#FBBC35"
           onPress={() => navigator.push({title: "Settings"})}
           style={styles.navBarRightButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText]}>
-            ⚙
-          </Text>
+          <Image source={require("./resources/settings.png")} style={styles.settingsLogo} resizeMode='contain' />
         </TouchableOpacity>
       );
     } else {
@@ -168,6 +166,11 @@ var styles = StyleSheet.create({
     width: 177,
     height: 35,
     marginTop: 5,
+  },
+  settingsLogo: {
+    width: 24,
+    height: 24,
+    marginTop: 10
   },
   scene: {
     flex: 1,
